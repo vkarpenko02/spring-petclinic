@@ -19,6 +19,13 @@
     <developerConnection>scm:git:https://github.com/vkarpenko02/spring-petclinic.git</developerConnection>
   </scm>
 
+  <distributionManagement>
+    <repository>
+      <id>local-repo</id>
+      <url>file:////Users/vkarpenko/local-maven-repo</url>
+    </repository>
+  </distributionManagement>
+
   <properties>
 
     <!-- Generic properties -->
