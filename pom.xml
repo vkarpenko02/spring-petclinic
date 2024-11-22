@@ -20,6 +20,13 @@
     <tag>HEAD</tag>
   </scm>
 
+  <distributionManagement>
+    <repository>
+      <id>local-repo</id>
+      <url>file:////Users/vkarpenko/local-maven-repo</url>
+    </repository>
+  </distributionManagement>
+
   <properties>
 
     <!-- Generic properties -->
