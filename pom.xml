@@ -15,9 +15,9 @@
 
   <name>petclinic</name>
   
-  <scm>
+  <!-- <scm>
     <developerConnection>scm:git:https://github.com/vkarpenko02/spring-petclinic.git</developerConnection>
-  </scm>
+  </scm> -->
 
   <distributionManagement>
     <repository>
