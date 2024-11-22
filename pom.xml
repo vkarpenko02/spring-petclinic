@@ -21,9 +21,13 @@
 
   <distributionManagement>
     <repository>
-      <id>loval-repo</id>
+      <id>local-repo</id>
       <url>file:////Users/vkarpenko/local-maven-repo</url>
     </repository>
+    <snapshotRepository>
+      <id>local-repo</id>
+      <url>file:////Users/vkarpenko/local-maven-repo</url>
+    </snaphotRepository>
   </distributionManagement>
 
   <properties>
