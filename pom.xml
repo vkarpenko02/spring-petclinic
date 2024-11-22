@@ -23,9 +23,9 @@
 
   <distributionManagement>
     <repository>
-      <id>myRepoId</id>
-      <name>myCompanyRepository</name>
-      <url>https://maven.pkg.github.com/vkarpenko02/spring-petclinic</url>
+      <id>spring-petclinic</id>
+      <name>vkarpenko02</name>
+      <url>https://github.com/vkarpenko02/spring-petclinic</url>
     </repository>
   </distributionManagement>
 
