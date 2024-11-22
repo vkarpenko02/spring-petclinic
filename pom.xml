@@ -16,16 +16,13 @@
   <name>petclinic</name>
   
   <scm>
-    <connection>scm:git:https://github.com/vkarpenko02/spring-petclinic.git</connection>
     <developerConnection>scm:git:https://github.com/vkarpenko02/spring-petclinic.git</developerConnection>
-    <url>https://github.com/vkarpenko02/spring-petclinic</url>
   </scm>
 
   <distributionManagement>
     <repository>
-      <id>spring-petclinic</id>
-      <name>vkarpenko02</name>
-      <url>https://github.com/vkarpenko02/spring-petclinic</url>
+      <id>loval-repo</id>
+      <url>file:////Users/vkarpenko/local-maven-repo</url>
     </repository>
   </distributionManagement>
 
