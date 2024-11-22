@@ -19,7 +19,7 @@
     <developerConnection>scm:git:https://github.com/vkarpenko02/spring-petclinic.git</developerConnection>
   </scm>
 
-  <distributionManagement>
+  <!-- <distributionManagement>
     <repository>
       <id>local-repo</id>
       <url>file:////Users/vkarpenko/local-maven-repo</url>
@@ -27,10 +27,10 @@
     <snapshotRepository>
       <id>local-repo</id>
       <url>file:////Users/vkarpenko/local-maven-repo</url>
-    </snaphotRepository>
-  </distributionManagement>
+    </snapshotRepository>
+  </distributionManagement> -->
 
-  <properties>
+ <properties>
 
     <!-- Generic properties -->
     <java.version>17</java.version>
