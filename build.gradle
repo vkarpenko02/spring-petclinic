@@ -6,6 +6,7 @@ plugins {
   id 'org.cyclonedx.bom' version '1.10.0'
   id 'io.spring.javaformat' version '0.0.43'
   id "io.spring.nohttp" version "0.0.11"
+  id "pl.allegro.tech.build.axion-release" version "1.18.7"
 }
 
 apply plugin: 'java'
@@ -67,6 +68,23 @@ checkstyle {
 checkstyleNohttp {
   configDirectory = project.file('src/checkstyle')
   configFile = file('src/checkstyle/nohttp-checkstyle.xml')
+}
+
+task openTestResults(dependsOn: ['build', 'test']) {
+    doLast {
+        // Path to HTML test results
+        def testHtmlReportPath = file("$buildDir/reports/tests/test/index.html")
+
+        if (testHtmlReportPath.exists()) {
+            // Open the test results in the default browser
+            println "Opening test results in browser..."
+            exec {
+                commandLine 'open', testHtmlReportPath.absolutePath
+            }
+        } else {
+            throw new GradleException("Test HTML report not found at: $testHtmlReportPath")
+        }
+    }
 }
 
 tasks.named("formatMain").configure { dependsOn("checkstyleMain") }
