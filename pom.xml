@@ -6,14 +6,25 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.4.0</version>
-    <relativePath></relativePath>
+    <relativePath />
   </parent>
 
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
-  <version>3.4.0-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
 
   <name>petclinic</name>
+
+  <scm>
+    <developerConnection>scm:git:https://github.com/vkarpenko02/spring-petclinic</developerConnection>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>local-repo</id>
+      <url>file:////Users/vkarpenko/local-maven-repo</url>
+    </repository>
+  </distributionManagement>
 
   <properties>
 
@@ -22,7 +33,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Important for reproducible builds. Update using e.g. ./mvnw versions:set -DnewVersion=... -->
-    <project.build.outputTimestamp>2023-05-10T07:42:50Z</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2024-11-27T12:45:54Z</project.build.outputTimestamp>
 
     <!-- Web dependencies -->
     <webjars-bootstrap.version>5.3.3</webjars-bootstrap.version>
@@ -144,6 +155,11 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -401,7 +417,7 @@
                         </goals>
                       </pluginExecutionFilter>
                       <action>
-                        <ignore></ignore>
+                        <ignore />
                       </action>
                     </pluginExecution>
                     <pluginExecution>
@@ -414,7 +430,7 @@
                         </goals>
                       </pluginExecutionFilter>
                       <action>
-                        <ignore></ignore>
+                        <ignore />
                       </action>
                     </pluginExecution>
                     <pluginExecution>
@@ -427,7 +443,7 @@
                         </goals>
                       </pluginExecutionFilter>
                       <action>
-                        <ignore></ignore>
+                        <ignore />
                       </action>
                     </pluginExecution>
                   </pluginExecutions>
