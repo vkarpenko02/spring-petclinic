@@ -12,6 +12,7 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'checkstyle'
 apply plugin: 'io.spring.javaformat'
+apply plugin: 'maven-publish'
 
 gradle.startParameter.excludedTaskNames += [ "checkFormatAot", "checkFormatAotTest" ]
 
@@ -24,6 +25,25 @@ java {
 
 repositories {
   mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = 'nexus'
+            url "http://localhost:8081/repository/maven-snapshots/"
+            allowInsecureProtocol = true
+            credentials {
+                username "admin"
+                password "pass64ForVM"
+            }
+        }
+    }
 }
 
 ext.checkstyleVersion = "10.20.0"
