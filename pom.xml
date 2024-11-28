@@ -20,11 +20,17 @@
     <tag>HEAD</tag>
   </scm>
 
-  <distributionManagement>
+<distributionManagement>
     <repository>
-      <id>local-repo</id>
-      <url>file:////Users/vkarpenko/local-maven-repo</url>
+      <id>nexus</id>
+      <name>Releases</name>
+      <url>http://localhost:8081/repository/maven-releases</url>
     </repository>
+    <snapshotRepository>
+      <id>nexus</id>
+      <name>Snapshot</name>
+      <url>http://localhost:8081/repository/maven-snapshots</url>
+    </snapshotRepository>
   </distributionManagement>
 
   <properties>
