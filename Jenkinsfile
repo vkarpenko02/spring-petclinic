@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'mvn checkstyle:checkstyle'
                 archiveArtifacts artifacts: 'target/checkstyle-report.xml', allowEmptyArchive: true
+                sh 'echo Checkstyle is completed!'
             }
         }
         stage ('Test') {
