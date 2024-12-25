@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         GIT_COMMIT = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+        GIT_BRANCH = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
         DOCKER_CREDS = credentials('docker_key')
     }
 
@@ -27,14 +28,18 @@ pipeline {
         }
         stage ('Creating Docker image') {
             steps {
-                sh 'docker build -t vkarpenko02/mr:${GIT_COMMIT} .'
-                withCredentials([usernamePassword(credentialsId: 'docker_key', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASS')]) {
-                    sh """
-                        echo ${DOCKER_HUB_PASS} | docker login -u ${DOCKER_HUB_USER} --password-stdin
-                        docker push vkarpenko02/mr:${GIT_COMMIT}
-                    """
+                script {
+                    def dockerTag = "vkarpenko02/${GIT_BRANCH == 'main' ? 'main' : 'mr'}:${GIT_COMMIT}"
+                    sh "docker build -t ${dockerTag} ."
+                    withCredentials([usernamePassword(credentialsId: 'docker_key', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASS')]) {
+                        sh """
+                            echo ${DOCKER_HUB_PASS} | docker login -u ${DOCKER_HUB_USER} --password-stdin
+                            docker push ${dockerTag}
+                        """
+                    }
                 }
             }
         }
     }
 }
+
