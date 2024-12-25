@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         GIT_COMMIT = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-        GIT_BRANCH = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
         DOCKER_CREDS = credentials('docker_key')
     }
 
@@ -29,7 +28,8 @@ pipeline {
         stage ('Creating Docker image') {
             steps {
                 script {
-                    def dockerTag = "vkarpenko02/${GIT_BRANCH == 'main' ? 'main' : 'mr'}:${GIT_COMMIT}"
+                    def dockerRepo = (env.BRANCH_NAME == 'main') ? 'vkarpenko02/main' : 'vkarpenko02/mr'
+                    def dockerTag = "${dockerRepo}:${GIT_COMMIT}"
                     sh "docker build -t ${dockerTag} ."
                     withCredentials([usernamePassword(credentialsId: 'docker_key', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASS')]) {
                         sh """
@@ -42,4 +42,3 @@ pipeline {
         }
     }
 }
-
